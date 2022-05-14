@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Chat App</title>
+</head>
+
+<body onload="enableEditMode()">
+
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1></i> ChatApp</h1>
+      <a id="leave-button" class="button">Leave Room</a>
+    </header>
+
+    <main class="chat-main">
+      <div class="chat-sidebar">
+        <h3><i class="fas fa-comments"></i> Room Name:</h3>
+        <h2 id="room-name"></h2>
+        <h3><i class="fas fa-users"></i> Users</h3>
+        <ul id="users"></ul>
+      </div>
+
+      <div class="chat-messages"></div>
+    </main>
+
+    <div class="chat-form-container">
+      <form id="chat-form">
+        <div class="chat-box">
+          <!-- Toolbox -->
+          <div class="tool-box">
+            <a onclick="executeCommand('bold')">
+              <i class="fa-solid fa-bold icon"></i>
+            </a>
+            <a onclick="executeCommand('italic')">
+              <i class="fa-solid fa-italic icon"></i>
+            </a>
+            <a onclick="executeCommand('strikethrough')">
+              <i class="fa-solid fa-strikethrough icon"></i>
+            </a>
+
+            <span class="vertical-line"></span>
+
+            <a onclick="executeCommandWithArguments('createLink', prompt('Enter a URL', 'https://'))">
+              <i class="fa-solid fa-link icon"></i>
+            </a>
+
+            <span class="vertical-line"></span>
+
+            <a onclick="executeCommand('insertOrderedList')">
+              <i class="fa-solid fa-list-ol icon"></i>
+            </a>
+            <a onclick="executeCommand('insertUnorderedList')">
+              <i class="fa-solid fa-list icon"></i>
+            </a>
+
+            <span class="vertical-line"></span>
+
+            <a onclick="executeCommandWithArguments('formatBlock', '<BLOCKQUOTE>')">
+              <i class="fa-regular fa-block-quote icon"></i>
+            </a>
+
+            <span class="vertical-line"></span>
+
+            <a onclick="executeCommandWithArguments('formatBlock',  'PRE')">
+              <i class="fa-solid fa-code icon"></i>
+            </a>
+            <a onclick="executeCommand('bold')">
+              <i class="fa-solid fa-file-code icon"></i>
+            </a>
+          </div>
+
+          <iframe id="message" style="width: 100%; height: 40px" frameborder="0"></iframe>
+
+          <!-- Toolbox -->
+          <div class="tool-box">
+            <a onclick="executeCommandWithArguments('insertImage', prompt('Enter url of image',''))">
+              <i class="fa-solid fa-plus icon" style="background-color: #2e3135; border-radius: 100%"></i>
+            </a>
+
+            <span class="vertical-line"></span>
+
+            <a onclick="insertEmoji()">
+              <i class="fa-solid fa-smile icon"></i>
+            </a>
+            <a>
+              <i class="fa-solid fa-at icon"></i>
+            </a>
+
+            <button class="send-button" style="float: right">
+              <i class="fas fa-paper-plane" style="color: #fff; margin: 5px 0px"></i>
+            </button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/emoji-button@latest/dist/index.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js"
+    integrity="sha512-juaCj8zi594KHQqb92foyp87mCSriYjw3BcTHaXsAn4pEB1YWh+z+XQScMxIxzsjfM4BeVFV3Ij113lIjWiC2w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chatBox.js"></script>
+</body>
+
+</html>
